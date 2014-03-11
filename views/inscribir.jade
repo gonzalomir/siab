@@ -1,0 +1,29 @@
+extends layout
+
+block content
+ h1 Inscripcion
+ form(role="form")
+  div(class="form-group")
+   label Nombres
+   span.input-group-addon @
+   input(type="text" class="form-control" placeholder="Nombres")
+  div(class="form-group") 
+   label Apellidos
+   input(type="text" class="form-control" placeholder="Apellido Paterno")
+   input(type="text" class="form-control" placeholder="Apellido Materno")
+  div(class="form-group") 
+   label Email
+   input(type="email" class="form-control" placeholder="Correo electronico")
+  div(class="form-group") 
+   label Telefono
+   input(type="tel" class="form-control" placeholder="Telefono")
+  div.checkbox
+   - var objCursos = JSON.parse(cursos)
+   each curso in objCursos
+    +cajita(curso.id, curso.nombre)
+ footer   
+  
+mixin cajita(cid,cnombre)
+ label.checkbox-inline
+  key #{cnombre}
+  input.checkbox(type='checkbox', checked=false, value='#{cid}')
